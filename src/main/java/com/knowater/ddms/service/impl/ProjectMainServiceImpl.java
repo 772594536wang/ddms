@@ -14,7 +14,7 @@ public class ProjectMainServiceImpl implements ProjectMainService {
     private ProjectMainMapper mainMapper;
 
     @Override
-    public List<ProjectMain> select() {
-        return mainMapper.select();
+    public List<ProjectMain> listProject(ProjectMain project) {
+        return mainMapper.select(project);
     }
 }

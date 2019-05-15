@@ -10,6 +10,7 @@
         <id column="contact" jdbcType="VARCHAR" property="contact"/>
         <id column="mobile" jdbcType="VARCHAR" property="mobile"/>
         <id column="project_type" jdbcType="INTEGER" property="projectType"/>
+        <id column="manager" jdbcType="VARCHAR" property="manager"/>
         <id column="approval_time" jdbcType="TIMESTAMP" property="approvalTime"/>
         <id column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <id column="create_user" jdbcType="VARCHAR" property="createUser"/>
@@ -18,8 +19,31 @@
         <id column="remark" jdbcType="VARCHAR" property="remark"/>
         <id column="status" jdbcType="INTEGER" property="status"/>
     </resultMap>
-    <select id="select" resultMap="BaseResultMap">
-        select * from project_main
+    <select id="select" resultMap="BaseResultMap" parameterType="com.knowater.ddms.entity.ProjectMain">
+        select
+          *
+        from
+          project_main
+        where
+          status = 1
+          <if test="serialNumber != null">
+              and serial_number = #{serialNumber}
+          </if>
+          <if test="projectName != null">
+              and project_name LIKE CONCAT(CONCAT('%',#{projectName,jdbcType=VARCHAR}),'%')
+          </if>
+          <if test="orgName != null">
+              and org_name LIKE CONCAT(CONCAT('%',#{orgName,jdbcType=VARCHAR}),'%')
+          </if>
+          <if test="contact != null">
+              and contact = #{contact}
+          </if>
+          <if test="projectType != null">
+              and project_type = #{projectType}
+          </if>
+          <if test="manager != null">
+              and manager LIKE CONCAT(CONCAT('%',#{manager,jdbcType=VARCHAR}),'%')
+          </if>
     </select>
 
 </mapper>
