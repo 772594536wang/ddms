@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.knowater.ddms.dao.ProjectMainMapper">
+    <resultMap id="BaseResultMap" type="com.knowater.ddms.entity.ProjectMain">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <id column="serial_number" jdbcType="VARCHAR" property="serialNumber"/>
+        <id column="project_name" jdbcType="VARCHAR" property="projectName"/>
+        <id column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <id column="address" jdbcType="VARCHAR" property="address"/>
+        <id column="contact" jdbcType="VARCHAR" property="contact"/>
+        <id column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <id column="project_type" jdbcType="INTEGER" property="projectType"/>
+        <id column="approval_time" jdbcType="TIMESTAMP" property="approvalTime"/>
+        <id column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <id column="create_user" jdbcType="VARCHAR" property="createUser"/>
+        <id column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <id column="update_user" jdbcType="VARCHAR" property="remark"/>
+        <id column="remark" jdbcType="VARCHAR" property="remark"/>
+        <id column="status" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+    <select id="select" resultMap="BaseResultMap">
+        select * from project_main
+    </select>
+
+</mapper>
