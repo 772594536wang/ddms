@@ -12,7 +12,7 @@ spring:
     banner-mode: "off"
 logging:
   level:
-#    com.xiaoxiao.ad.dao.user: debug
+    com.knowater.ddms.dao: debug
     org.springframework.boot.autoconfigure: ERROR
 
 mybatis:
