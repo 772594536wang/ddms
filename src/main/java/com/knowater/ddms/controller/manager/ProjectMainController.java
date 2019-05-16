@@ -24,7 +24,7 @@ public class ProjectMainController {
     @Autowired
     private ProjectMainService projectMainService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/listProject", method = RequestMethod.GET)
     public ResponseEntry get(@RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
                              @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                              @RequestParam(value = "serialNumber", required = false) String serialNumber,
@@ -54,14 +54,21 @@ public class ProjectMainController {
         return ResultBuilder.buildSuccessResult(map);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(value = "/updateProject", method = RequestMethod.PUT)
     public ResponseEntry edit(@RequestBody JSONObject data) {
         ProjectMain projectMain = FastJsonUtils.convertJSONToObject(data.toString(), ProjectMain.class);
         projectMainService.update(projectMain);
         return ResultBuilder.buildSuccessResult("更新成功！");
     }
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/addProject", method = RequestMethod.POST)
+    public ResponseEntry add(@RequestBody JSONObject data) {
+        ProjectMain projectMain = FastJsonUtils.convertJSONToObject(data.toString(), ProjectMain.class);
+        projectMainService.add(projectMain);
+        return ResultBuilder.buildSuccessResult("更新成功！");
+    }
+
+    @RequestMapping(value = "/getProject", method = RequestMethod.GET)
     public ResponseEntry get(@RequestParam(value = "id") Integer id) {
         if (id == 0) {
             return ResultBuilder.buildErrorResult(MsgContants.PARAM_ERROR);

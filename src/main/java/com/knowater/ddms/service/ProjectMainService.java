@@ -13,4 +13,6 @@ public interface ProjectMainService {
     void delete(Integer id);
 
     void update(ProjectMain projectMain);
+
+    void add(ProjectMain projectMain);
 }

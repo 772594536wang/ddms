@@ -19,6 +19,44 @@
         <id column="remark" jdbcType="VARCHAR" property="remark"/>
         <id column="status" jdbcType="INTEGER" property="status"/>
     </resultMap>
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="com.knowater.ddms.entity.ProjectMain">
+        insert into project_main
+        (
+          serial_number,
+          project_name,
+          org_name,
+          address,
+          contact,
+          mobile,
+          project_type,
+          manager,
+          approval_time,
+          create_time,
+          create_user,
+          update_time,
+          update_user,
+          remark,
+          status
+        )
+        values
+        (
+          #{serialNumber,jdbcType=VARCHAR},
+          #{projectName,jdbcType=VARCHAR},
+          #{orgName,jdbcType=VARCHAR},
+          #{address,jdbcType=VARCHAR},
+          #{contact,jdbcType=VARCHAR},
+          #{mobile,jdbcType=VARCHAR},
+          #{projectType,jdbcType=INTEGER},
+          #{manager,jdbcType=VARCHAR},
+          #{approvalTime,jdbcType=TIMESTAMP},
+          #{createTime,jdbcType=TIMESTAMP},
+          #{createUser,jdbcType=VARCHAR},
+          #{updateTime,jdbcType=TIMESTAMP},
+          #{updateUser,jdbcType=VARCHAR},
+          #{remark,jdbcType=VARCHAR},
+          #{status,jdbcType=INTEGER}
+        )
+    </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.knowater.ddms.entity.ProjectMain">
         update project_main
         <set>

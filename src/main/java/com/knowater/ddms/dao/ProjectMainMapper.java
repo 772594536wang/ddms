@@ -28,4 +28,11 @@ public interface ProjectMainMapper {
      * @param id
      */
     void updateByPrimaryKeySelective(ProjectMain project);
+
+    /**
+     * 插入对象
+     *
+     * @param projectMain
+     */
+    void insert(ProjectMain projectMain);
 }

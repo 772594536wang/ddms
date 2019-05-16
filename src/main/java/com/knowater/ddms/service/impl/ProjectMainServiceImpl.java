@@ -35,4 +35,9 @@ public class ProjectMainServiceImpl implements ProjectMainService {
     public void update(ProjectMain projectMain) {
         mainMapper.updateByPrimaryKeySelective(projectMain);
     }
+
+    @Override
+    public void add(ProjectMain projectMain) {
+        mainMapper.insert(projectMain);
+    }
 }
