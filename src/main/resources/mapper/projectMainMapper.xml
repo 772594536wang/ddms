@@ -15,10 +15,61 @@
         <id column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <id column="create_user" jdbcType="VARCHAR" property="createUser"/>
         <id column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
-        <id column="update_user" jdbcType="VARCHAR" property="remark"/>
+        <id column="update_user" jdbcType="VARCHAR" property="updateUser"/>
         <id column="remark" jdbcType="VARCHAR" property="remark"/>
         <id column="status" jdbcType="INTEGER" property="status"/>
     </resultMap>
+    <update id="updateByPrimaryKeySelective" parameterType="com.knowater.ddms.entity.ProjectMain">
+        update project_main
+        <set>
+            <if test="serialNumber != null">
+                serial_number = #{serialNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="projectName != null">
+                project_name = #{projectName,jdbcType=VARCHAR},
+            </if>
+            <if test="orgName != null">
+                org_name = #{orgName,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="contact != null">
+                contact = #{contact,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="projectType != null">
+                project_type = #{projectType,jdbcType=INTEGER},
+            </if>
+            <if test="manager != null">
+                manager = #{manager,jdbcType=VARCHAR},
+            </if>
+            <if test="approvalTime != null">
+                approvalTime = #{approvalTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateUser != null">
+                update_user = #{updateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
     <select id="select" resultMap="BaseResultMap" parameterType="com.knowater.ddms.entity.ProjectMain">
         select
           *
@@ -44,6 +95,14 @@
           <if test="manager != null">
               and manager LIKE CONCAT(CONCAT('%',#{manager,jdbcType=VARCHAR}),'%')
           </if>
+    </select>
+    <select id="selectById" parameterType="integer" resultType="com.knowater.ddms.entity.ProjectMain">
+        select
+          *
+        from
+          project_main
+        where
+          id = #{id}
     </select>
 
 </mapper>

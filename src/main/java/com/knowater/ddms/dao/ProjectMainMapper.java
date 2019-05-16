@@ -2,6 +2,7 @@ package com.knowater.ddms.dao;
 
 import com.knowater.ddms.entity.ProjectMain;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,4 +13,19 @@ public interface ProjectMainMapper {
      * @return
      */
     List<ProjectMain> select(ProjectMain project);
+
+    /**
+     * 通过id获取对象信息
+     *
+     * @param id
+     * @return
+     */
+    ProjectMain selectById(@Param("id") Integer id);
+
+    /**
+     * 更新对象信息
+     *
+     * @param id
+     */
+    void updateByPrimaryKeySelective(ProjectMain project);
 }

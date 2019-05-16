@@ -7,4 +7,10 @@ import java.util.List;
 public interface ProjectMainService {
 
     List<ProjectMain> listProject(ProjectMain project);
+
+    ProjectMain getProjectById(Integer id);
+
+    void delete(Integer id);
+
+    void update(ProjectMain projectMain);
 }

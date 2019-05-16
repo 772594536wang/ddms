@@ -17,4 +17,22 @@ public class ProjectMainServiceImpl implements ProjectMainService {
     public List<ProjectMain> listProject(ProjectMain project) {
         return mainMapper.select(project);
     }
+
+    @Override
+    public ProjectMain getProjectById(Integer id) {
+        return mainMapper.selectById(id);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        ProjectMain projectMain = new ProjectMain();
+        projectMain.setId(id);
+        projectMain.setStatus(0);
+        mainMapper.updateByPrimaryKeySelective(projectMain);
+    }
+
+    @Override
+    public void update(ProjectMain projectMain) {
+        mainMapper.updateByPrimaryKeySelective(projectMain);
+    }
 }
