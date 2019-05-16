@@ -65,7 +65,7 @@ public class ProjectMainController {
     public ResponseEntry add(@RequestBody JSONObject data) {
         ProjectMain projectMain = FastJsonUtils.convertJSONToObject(data.toString(), ProjectMain.class);
         projectMainService.add(projectMain);
-        return ResultBuilder.buildSuccessResult("更新成功！");
+        return ResultBuilder.buildSuccessResult("添加成功！");
     }
 
     @RequestMapping(value = "/getProject", method = RequestMethod.GET)
