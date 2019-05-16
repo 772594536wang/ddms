@@ -32,7 +32,7 @@ public interface BuildingsMapper {
     /**
      * 插入对象
      *
-     * @param projectMain
+     * @param buildings
      */
     void insert(Buildings buildings);
 }
